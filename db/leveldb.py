@@ -12,6 +12,7 @@ class Leveldb:
 
         block_key = f"block_{block.index}".encode()
         block_data = json.dumps(block.__dict__).encode()
+        print(f"Saving block: {block.__dict__}")  # 디버깅 로그 추가
         self.db.put(block_key, block_data)
         self.db.put(b"last_block",block_data)
         print(f"Block {block.index} saved to db.")
