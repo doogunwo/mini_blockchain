@@ -129,7 +129,7 @@ class Blockchain:
                     client.sendall(block_data.encode())
                     print("f{block.index} sent to {peer_host}:{peer_port}")
             except Exception as e:
-                print("f Error broadcasting to peer {e}")
+                print(f" Error broadcasting to peer {e}")
 
     def add_block(self, block_data):
         
@@ -141,7 +141,7 @@ class Blockchain:
         )
         new_block.nonce = block_data["nonce"]
         new_block.hash = block_data["hash"]
-        
+    
         if new_block.pre_hash == self.get_latest_block().hash and \
             new_block.hash.startwith("0" * self.difficulty):
                 self.chain.append(new_block)
@@ -149,5 +149,6 @@ class Blockchain:
         else:
             print(f"Invalid block received : {new_block.index}")
 
+  
             
         

@@ -94,17 +94,4 @@ class Node:
         else:
             print("No blockchain attached to this node")
 
-    def connect_to_peer(self, peer_host, peer_port):
-        try:
-            client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            client.connect((peer_host,peer_port))
-            self.peers.append((peer_host, peer_port))
-            print(f"connect to peer {peer_host}:{peer_port}")
-
-            message = json.dumps({"message": "Connect to peer"})
-            client.sendall(message.encode())
-            client.close()
-        except Exception as e:
-            print(f"Error connecting to peer: {e}")
-
-    
+   
